@@ -1,42 +1,48 @@
-import React, { useEffect, useState, useMemo } from "react";
-import axios from "axios";
-import { DEEPAI_API_KEY, TWITTER_API_KEY }  from "../API_KEYS";
+import React from "react";
+import { DEEPAI_API_KEY}  from "../API_KEYS";
+import TweetCard from "../components/TweetCard";
+import Tweets from "../data/tweets";
 
 function Home() {
+    function getTweet() {
+        window.location.reload();
+    }
+    let selector = Math.floor(Math.random()*(11-1)+1)
 
-//https://twitter.com/ozisworld/status/1584571906417913857
+
+    const newTweet = Tweets[0][`tweet-${selector}`]
 
     const deepai = require('deepai');
-    const [tweetData, getTweet] = useState({}); // useState is a hook, default value is an object
 
-    // deepai.setApiKey('quickstart-QUdJIGlzIGNvbWluZy4uLi4K');
+    deepai.setApiKey(`${DEEPAI_API_KEY}`);
 
     (async function() {
         var resp = await deepai.callStandardApi("text2img", {
-                text: `{tweetText}`,
+                text: `${newTweet.text}`,
         });
-        console.log(resp);
+        const img = document.createElement("img");
+        img.src = `${resp.output_url}`;
+        img.className = "img"
+        document.body.appendChild(img);
     })()
-
-    useEffect(() => {
-        axios
-        .get('https://api.twitter.com/2/users/by/username/ozidoesthings?user.fields=created_at,profile_image_url,verified&tweet.fields=public_metrics')
-        .then(function (response) {
-            console.log(JSON.stringify(response.data))
-        })
-        .catch(function (error) {
-                console.warn(error);
-        });
-    })
-    
-		// headers: { 
-		// 		'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAAKVtWAEAAAAAsLMAyaKjuHtbTgt4r4yn%2BAnll3Q%3DHUAxcoMIrjCPYBA84cOlWI8Ktqf861VntmjJEhFpiwWNXbElLm', 
-		// 		'Cookie': 'guest_id=v1%3A166629239119577773'
-		// }
 
     return (
         <div className="homePage">
-
+            <div className="pageHeader">
+                <div className="titleWrapper">
+                    <h1 className="title-text">#TweetToImage</h1>
+                </div>
+                
+                <h6>Ever wondered what a tweet would <i>look</i> like?</h6>
+                <h6>Click the button to generate a random tweet and its AI-generated visual counterpart:</h6>
+            </div>
+            
+            <button className="button" onClick={getTweet}>new tweet</button>
+            <TweetCard
+            username={newTweet.username}
+            text={newTweet.text}
+            url={newTweet.url}
+            />
         </div>
     )
 }

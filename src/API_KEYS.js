@@ -1,2 +1,1 @@
-export const TWITTER_API_KEY = "RPFa9i2gwLgDR3d1ovpZDYpgK"
-export const DEEPAI_API_KEY = "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
+export const DEEPAI_API_KEY = "3fb0c87c-f037-4547-a3a3-a9a8411ca54a"
