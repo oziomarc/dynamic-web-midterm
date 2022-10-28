@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dynamic-web-midterm/static/css/main.ad4cd17c.css",
+    "main.js": "/dynamic-web-midterm/static/js/main.da23e9e3.js",
+    "static/js/787.337df751.chunk.js": "/dynamic-web-midterm/static/js/787.337df751.chunk.js",
+    "index.html": "/dynamic-web-midterm/index.html",
+    "main.ad4cd17c.css.map": "/dynamic-web-midterm/static/css/main.ad4cd17c.css.map",
+    "main.da23e9e3.js.map": "/dynamic-web-midterm/static/js/main.da23e9e3.js.map",
+    "787.337df751.chunk.js.map": "/dynamic-web-midterm/static/js/787.337df751.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ad4cd17c.css",
+    "static/js/main.da23e9e3.js"
+  ]
+}
