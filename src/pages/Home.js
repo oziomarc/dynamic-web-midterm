@@ -5,6 +5,7 @@ import Tweets from "../data/tweets";
 
 function Home() {
     function getTweet() {
+        window.alert("loading...");
         window.location.reload();
     }
     let selector = Math.floor(Math.random()*(11-1)+1)
